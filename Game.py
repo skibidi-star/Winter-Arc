@@ -1,16 +1,18 @@
 import pygame
 import random
 import time
+from os import listdir
+from os.path import isfile, join
 
 pygame.init()
 #Making window
-display_width, display_height = 700, 600
+display_width, display_height = 1000, 700
 window = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Dr. Goon's Winter Arc")
 clock = pygame.time.Clock()
 
 dgwaImg = pygame.image.load('dgwa.png')
-DEFAULT_IMAGE_SIZE = (700, 600)
+DEFAULT_IMAGE_SIZE = (1000, 700)
 dgwaImg = pygame.transform.scale(dgwaImg, DEFAULT_IMAGE_SIZE)
 
 DEFAULT_IMAGE_POSITION = (0,0)
