@@ -9,7 +9,7 @@ window = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Dr. Goon's Winter Arc")
 clock = pygame.time.Clock()
 
-dgwaImg = pygame.image.load('Dr.goon title.png')
+dgwaImg = pygame.image.load('dgwa.png')
 DEFAULT_IMAGE_SIZE = (700, 600)
 dgwaImg = pygame.transform.scale(dgwaImg, DEFAULT_IMAGE_SIZE)
 
@@ -53,6 +53,10 @@ def button(msg,x,y,w,h,ic,ac,tc,action=None,):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     window.blit(textSurf, textRect)
 
+def quitgame():
+    pygame.quit()
+    quit()
+
 def game_intro():
 
     intro = True
@@ -64,25 +68,24 @@ def game_intro():
                 pygame.quit()
                 quit()
         window.blit(dgwaImg,(0,0))
-        TextSurf, TextRect = text_objects("Dr.Goon", largeText, black)
-        TextRect.center = ((display_width/2),(display_height/6))
+        TextSurf, TextRect = text_objects("Dr.Goon",largeText,black)
+        TextRect.center = ((display_width/2),(display_height/9))
         window.blit(TextSurf, TextRect)
+        button("GO!",display_width/7,450,100,50,green,bright_green,black,game_loop)
+        button("Quit",500,450,100,50,red,bright_red,black,quitgame)
         print(pygame.mouse.get_pos())
         pygame.display.update()
 
 def game_loop():
 
-    pygame.mixer.music.load('Croc Legend Of The Gobbos - Main Menu (OST).mp3')
-    pygame.mixer.music.play(-1) 
     gameExit = False
     time.sleep(.1)
-    global turn
-    turn=0
     while not gameExit:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        window.fill(gray)
+        window.fill(white)
+        pygame.display.update()
 game_intro()
 pygame.quit()
