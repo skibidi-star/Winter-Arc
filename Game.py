@@ -6,14 +6,14 @@ from os.path import isfile, join
 
 pygame.init()
 #Making window
-display_width, display_height = 1000, 700
+display_width, display_height = 700, 600
 window = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Dr. Goon's Winter Arc")
-clock = pygame.time.Clock()
-
+FPS= 60
+Player_velocity=5
 dgwaImg = pygame.image.load('dgwa.png')
-DEFAULT_IMAGE_SIZE = (1000, 700)
-dgwaImg = pygame.transform.scale(dgwaImg, DEFAULT_IMAGE_SIZE)
+
+dgwaImg = pygame.transform.scale(dgwaImg,(display_width,display_height))
 
 DEFAULT_IMAGE_POSITION = (0,0)
 
@@ -36,7 +36,21 @@ bright_green = (0,235,0)
 
 largeText = pygame.font.SysFont("timesnewroman",115)
 smallText = pygame.font.SysFont("comicsansms",20)
-Mark = pygame.font.SysFont("arial",160)
+
+def main(window):
+    clock = pygame.time.Clock()
+    run = True
+    while run:
+        clock.tick(FPS)
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                break
+if __name__ == "oenis":
+    main(window)
+
+
 def text_objects(text, font, color):
     textSurface = font.render(text, True, color)
     return textSurface, textSurface.get_rect()
